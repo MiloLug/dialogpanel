@@ -12,7 +12,8 @@
 }
 .dialogPanel_button{
   width:100%;
-  height:45px;
+  height:auto;
+  display:inline-block;
   background:rgb(34, 34, 39);
   cursor:pointer;
   font-size: 2.8vw;
@@ -21,7 +22,7 @@
 .dialogPanel_dialog .downmenu{
   position: relative;
   width: 100%;
-  height: 45px;
+  height: auto;
   display: flex;
   bottom: 0;
   background:rgb(34, 34, 39);
@@ -136,7 +137,6 @@
 }
 .dialogPanel_dialog>.downmenu{
   min-height: 45px;
-  max-height: 45px;
 }
 .dialogPanel_dialog .dialogPanel_input,.dialogPanel_dialog .dialogPanel_uploader{
   max-width:calc(100% - 10px);
