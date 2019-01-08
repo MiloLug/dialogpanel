@@ -71,7 +71,7 @@
 				case "input":
 					var inp = bc.appendChild($(m.src[el.type])[0]);
 					inp.setAttribute("iid", el.inpID);
-					$(inp).attr(el.opt || {});
+					$(inp).attr(el.attr || {});
 					if (inpcount < 1)
 						inpcount++,
 						inp.focus();
@@ -79,7 +79,7 @@
 				case "select":
 					var inp = $(bc.appendChild($(m.src.select)[0])),
 						tmp;
-					inp.attr("sid", el.selID).attr(el.opt || {});
+					inp.attr("sid", el.selID).attr(el.attr || {});
 					el.options&&el.options.forEach(function(obj){
 						tmp=inp[0].appendChild($("<option></option>"));
 						tmp.value=obj.value;
