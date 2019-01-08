@@ -1,0 +1,173 @@
+[dialogPanel_hidden]{
+  -webkit-touch-callout: none !important; 
+    -webkit-user-select: none !important; 
+     -khtml-user-select: none !important; 
+       -moz-user-select: none !important; 
+        -ms-user-select: none !important; 
+            user-select: none !important;
+  width:0 !important;
+  height:0 !important;
+  position:fixed !important;
+  display:none !important;
+}
+.dialogPanel_button{
+  width:100%;
+  height:45px;
+  background:rgb(34, 34, 39);
+  cursor:pointer;
+  font-size: 2.8vw;
+  color:white;
+}
+.dialogPanel_dialog .downmenu{
+  position: relative;
+  width: 100%;
+  height: 45px;
+  display: flex;
+  bottom: 0;
+  background:rgb(34, 34, 39);
+  box-shadow: 0px 5px 20px black;
+}
+/*<styles for inputs text and select and uploader>*/
+.dialogPanel_input,.dialogPanel_select,.dialogPanel_uploader{
+  width:100%;
+  max-width:300px;
+  height: 40px;
+  background:rgb(34, 34, 39);
+  color:white;
+  padding:2px 10px;
+  margin:5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display:flex;
+}
+.dialogPanel_input:focus{
+  background:rgb(10, 10, 10) !important;
+}
+/*</styles for inputs text and select and uploader>*/
+
+/*<styles for uploader>*/
+.dialogPanel_uploader{
+  word-break: break-all;
+  display: inline-block;
+  position: relative;
+  height: auto;
+  padding: 11px;
+  color: #ffe8c9;
+}
+/*</styles for uploader>*/
+
+/*<styles for inputs checkbox>*/
+.dialogPanel_checkbox{
+  cursor:pointer;
+  position: relative;
+  margin: 5px;
+  border-bottom: 2px solid #222227;
+  color: rgb(125, 125, 125);
+  display: inline-flex;
+}
+.dialogPanel_checkbox:hover{
+  border-bottom:2px solid black;
+  color:white;
+}
+.dialogPanel_checkbox>text{
+  word-break: break-all;
+}
+.dialogPanel_checkbox>div{
+  margin-right:5px;
+  color:rgb(0, 55, 55);
+}
+.dialogPanel_checkbox:hover>div{
+  color:rgb(125, 125, 125);
+}
+.dialogPanel_checkbox>input:checked + div{
+  color:white !important;
+}
+/*</styles for inputs checkbox>*/
+/*<styles for dialogs>*/
+.dialogPanel_dialogback{
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  background:rgba(0, 0, 0, 0.77);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index:9999999999999999999;
+}
+.dialogPanel_dialog{
+  position:fixed;
+  max-width: 550px;
+  width: 100%;
+  max-height: 60%;
+  display: inline-flex;
+  flex-direction: column;
+  background:rgb(26, 26, 29);
+  overflow: hidden;
+}
+.dialogPanel_dialog .message{
+  width: calc(100% - 10px);
+  margin: 5px;
+  word-break: break-all;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  position: relative;
+  height: auto;
+  max-height: 100%;
+  color:rgb(255, 152, 0);
+  text-align:left;
+  line-height: 20px;
+  border:none;
+}
+.dialogPanel_dialog>.scrollplane{
+  max-width: 100%;
+  max-height: 100%;
+  flex-direction: column;
+  display:inline-block;
+  height:auto;
+  position: relative;
+  padding: 5px 14px 10px 14px;
+  text-align: left;
+  overflow-y:auto;
+}
+.dialogPanel_dialog>.downmenu{
+  min-height: 45px;
+  max-height: 45px;
+}
+.dialogPanel_dialog .dialogPanel_input,.dialogPanel_dialog .dialogPanel_uploader{
+  max-width:calc(100% - 10px);
+}
+.dialogPanel_dialog[topLayer]{
+  box-shadow: 0 0 92px -20px #000000;
+}
+
+.dialogPanel_cls:active,.dialogPanel_cls[emactive]{
+  background:rgb(10, 10, 10);
+}
+.dialogPanel_cls:hover:not(:active),.dialogPanel_cls[emhover]:not(:active):not([emtaped]){
+  background:rgb(20, 20, 20);
+}
+
+/*</styles for dialogs>*/
+
+@media screen and (min-width:710px) {
+  .dialogPanel_button{
+    font-size:19px;
+  }
+}
+@media screen and (max-width:470px) {
+  .dialogPanel_button{
+    font-size:3.8vw;
+  }
+}
+@media screen and (max-height:230px) {
+  .dialogPanel_dialog{
+    max-height:100%;
+    height:100%;
+  }
+}
+
