@@ -8,12 +8,12 @@
 			return "_" + req;
 		},
 		src: {
-			input: '<input type="text" class="dialogPanel_input">',
-			textarea: '<textarea type="text" class="dialogPanel_input"></textarea>',
-			button: '<button class="dialogPanel_btn"></button>',
+			input: '<input type="text" class="dialogPanel_input dialogPanel_cls">',
+			textarea: '<textarea type="text" class="dialogPanel_input dialogPanel_cls"></textarea>',
+			button: '<button class="dialogPanel_button dialogPanel_cls"></button>',
 			checkbox: '<label class="dialogPanel_checkbox"><input type="checkbox" hidden><div>&#10003;</div><text></text></label>',
-			uploader: '<label class="dialogPanel_uploader"><div></div><input type="file" hidden></label>',
-			select: '<select class="dialogPanel_select"></select>'
+			uploader: '<label class="dialogPanel_uploader dialogPanel_cls"><div></div><input type="file" hidden></label>',
+			select: '<select class="dialogPanel_select dialogPanel_cls"></select>'
 		},
 		open: function (param) {
 			window.focus();
@@ -26,7 +26,7 @@
 			inpcount = 0,
 			UID = m.getUID(),
 			dialog = (dialogback || (dialogback=a[0].appendChild($('<div class="dialogPanel_dialogback"></div>')[0])))
-				.appendChild($('<div class="dialog" uid="' + UID + '"><div class="scrollplane"></div><div class="downmenu"></div>')[0]);
+				.appendChild($('<div class="dialogPanel_dialog" uid="' + UID + '"><div class="scrollplane"></div><div class="downmenu"></div>')[0]);
 				console.log(dialog);
 			var bc = dialog.querySelector(".scrollplane"),
 			fn = function (e) {
@@ -42,7 +42,7 @@
 				dialog.querySelectorAll(".scrollplane>.dialogPanel_uploader>input").forEach(function (el) {
 					data.fileLists[el.getAttribute("uid")] = el.files;
 				});
-				dialog.querySelectorAll(".scrollplane>.dialogPanel_checkbox>input").all(function (el) {
+				dialog.querySelectorAll(".scrollplane>.dialogPanel_checkbox>input").forEach(function (el) {
 					data.checked[el.getAttribute("cid")] = el.checked;
 				});
 				a.dialogPanel("close", UID);
@@ -117,7 +117,7 @@
 		close: function (uid) {
 			var a = $(this[0] ? this[0] : $("body")[0]),
 			db = a.children(".dialogPanel_dialogback")[0],
-			dialog = $(".dialog[uid=" + uid + "]");
+			dialog = $(".dialogPanel_dialog[uid=" + uid + "]");
 			if (!db || !dialog[0])
 				return a;
 			(dialog = [
@@ -146,7 +146,7 @@
 		toTop: function (uid) {
 			var a = $(this[0] ? this[0] : $("body")[0]),
 			db = a.children(".dialogPanel_dialogback"),
-			dialog = $(".dialog[uid=" + uid + "]"),
+			dialog = $(".dialogPanel_dialog[uid=" + uid + "]"),
 			t1;
 			if (!db[0] || !dialog[0])
 				return a;
