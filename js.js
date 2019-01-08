@@ -8,11 +8,12 @@
 			return "_" + req;
 		},
 		src: {
-			input: '<input type="text" class="inputstyle cls">',
-			textarea: '<textarea type="text" class="inputstyle cls"></textarea>',
-			button: '<button class="blackbtn bwhitefont cls"></button>',
-			checkbox: '<label class="chbstyle"><input type="checkbox" hidden><div>&#10003;</div><text></text></label>',
-			uploader: '<label class="uploaderstyle cls"><div></div><input type="file" hidden></label>'
+			input: '<input type="text" class="dialogPanel_input">',
+			textarea: '<textarea type="text" class="dialogPanel_input"></textarea>',
+			button: '<button class="dialogPanel_btn"></button>',
+			checkbox: '<label class="dialogPanel_checkbox"><input type="checkbox" hidden><div>&#10003;</div><text></text></label>',
+			uploader: '<label class="dialogPanel_uploader"><div></div><input type="file" hidden></label>',
+			select: '<select class="dialogPanel_select"></select>'
 		},
 		open: function (param) {
 			window.focus();
@@ -38,10 +39,10 @@
 				dialog.querySelectorAll(".scrollplane>input,.scrollplane>textarea").forEach(function (el) {
 					data.values[el.getAttribute("iid")] = el.value;
 				});
-				dialog.querySelectorAll(".scrollplane>.uploaderstyle>input").forEach(function (el) {
+				dialog.querySelectorAll(".scrollplane>.dialogPanel_uploader>input").forEach(function (el) {
 					data.fileLists[el.getAttribute("uid")] = el.files;
 				});
-				dialog.querySelectorAll(".scrollplane>.chbstyle>input").all(function (el) {
+				dialog.querySelectorAll(".scrollplane>.dialogPanel_checkbox>input").all(function (el) {
 					data.checked[el.getAttribute("cid")] = el.checked;
 				});
 				a.dialogPanel("close", UID);
@@ -74,6 +75,16 @@
 					if (inpcount < 1)
 						inpcount++,
 						inp.focus();
+					break;
+				case "select":
+					var inp = $(bc.appendChild($(m.src.select)[0])),
+						tmp;
+					inp.attr("sid", el.selID).attr(el.opt || {});
+					el.options&&el.options.forEach(function(obj){
+						tmp=inp[0].appendChild($("<option></option>"));
+						tmp.value=obj.value;
+						tmp.innerHTML=obj.text;
+					});
 					break;
 				case "checkbox":
 					var ch = $(bc.appendChild($(m.src.checkbox)[0]));
