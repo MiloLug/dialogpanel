@@ -1,0 +1,2 @@
+# dialogpanel
+plugin jq modal
