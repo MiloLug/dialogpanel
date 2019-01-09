@@ -13,7 +13,7 @@
 			button: '<button class="dialogPanel_button dialogPanel_cls"></button>',
 			checkbox: '<label class="dialogPanel_checkbox"><input type="checkbox" hidden><div>&#10003;</div><text></text></label>',
 			uploader: '<label class="dialogPanel_uploader dialogPanel_cls"><div></div><input type="file" hidden></label>',
-			select: '<select class="dialogPanel_select dialogPanel_cls"></select>'
+			select: '<select class="dialogPanel_select dialogPanel_cls"></select>',
 			custom: '<div class="dialogPanel_custom"></div>'
 		},
 		open: function (param) {
@@ -28,7 +28,6 @@
 			UID = m.getUID(),
 			dialog = (dialogback || (dialogback=a[0].appendChild($('<div class="dialogPanel_dialogback"></div>')[0])))
 				.appendChild($('<div class="dialogPanel_dialog" uid="' + UID + '"><div class="scrollplane"></div><div class="downmenu"></div>')[0]);
-				console.log(dialog);
 			var bc = dialog.querySelector(".scrollplane"),
 			fn = function (e) {
 				var data = {
