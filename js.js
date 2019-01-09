@@ -14,6 +14,7 @@
 			checkbox: '<label class="dialogPanel_checkbox"><input type="checkbox" hidden><div>&#10003;</div><text></text></label>',
 			uploader: '<label class="dialogPanel_uploader dialogPanel_cls"><div></div><input type="file" hidden></label>',
 			select: '<select class="dialogPanel_select dialogPanel_cls"></select>'
+			custom: '<div class="dialogPanel_custom"></div>'
 		},
 		open: function (param) {
 			window.focus();
@@ -93,6 +94,10 @@
 					.attr("cid", el.chcID)
 					.attr(el.attr || {});
 					ch.children("text").html(el.chctext);
+					break;
+				case "custom":
+					var cust=$(bc.appendChild($(m.src.custom)[0]));
+					el.init(cust);
 					break;
 				case "uploader":
 					var upl = $(bc.appendChild($(m.src.upoader)[0])),
