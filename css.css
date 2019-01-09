@@ -16,9 +16,18 @@
   display:inline-block;
   background:rgb(34, 34, 39);
   cursor:pointer;
-  font-size: 2.8vw;
+  font-size: 15px;
   color:white;
 }
+	/*<styles for clicks>*/
+.dialogPanel_cls:active,.dialogPanel_cls[emactive]{
+  background:rgb(10, 10, 10);
+}
+.dialogPanel_cls:hover:not(:active),.dialogPanel_cls[emhover]:not(:active):not([emtaped]){
+  background:rgb(20, 20, 20);
+}
+	/*</styles for clicks>*/
+
 .dialogPanel_dialog .downmenu{
   position: relative;
   width: 100%;
@@ -29,12 +38,20 @@
   box-shadow: 0px 5px 20px black;
 }
 /*<styles for inputs text and select and uploader>*/
+.dialogPanel_custom{
+  width:calc(100% - 10px);
+  color:white;
+  margin:5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 .dialogPanel_input,.dialogPanel_select,.dialogPanel_uploader{
   width:100%;
   max-width:300px;
   height: 40px;
   background:rgb(34, 34, 39);
-  color:white;
+  color:white !important;
   padding:2px 10px;
   margin:5px;
   -webkit-appearance: none;
@@ -54,7 +71,7 @@
   position: relative;
   height: auto;
   padding: 11px;
-  color: #ffe8c9;
+  color: #ffe8c9 !important;
 }
 /*</styles for uploader>*/
 
@@ -144,26 +161,8 @@
 .dialogPanel_dialog[topLayer]{
   box-shadow: 0 0 92px -20px #000000;
 }
-
-.dialogPanel_cls:active,.dialogPanel_cls[emactive]{
-  background:rgb(10, 10, 10);
-}
-.dialogPanel_cls:hover:not(:active),.dialogPanel_cls[emhover]:not(:active):not([emtaped]){
-  background:rgb(20, 20, 20);
-}
-
 /*</styles for dialogs>*/
 
-@media screen and (min-width:710px) {
-  .dialogPanel_button{
-    font-size:19px;
-  }
-}
-@media screen and (max-width:470px) {
-  .dialogPanel_button{
-    font-size:3.8vw;
-  }
-}
 @media screen and (max-height:230px) {
   .dialogPanel_dialog{
     max-height:100%;
