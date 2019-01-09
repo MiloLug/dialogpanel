@@ -96,6 +96,7 @@
 					break;
 				case "custom":
 					var cust=$(bc.appendChild($(m.src.custom)[0]));
+					cust.attr(el.attr||{});
 					el.init(cust,UID);
 					break;
 				case "uploader":
