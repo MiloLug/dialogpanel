@@ -162,7 +162,7 @@
 			return a;
 		}
 	};
-	$.fn.dialogPanel = function (action, param) {
-		return m[action].call(this, param);
+	$.fn.dialogPanel = function (action, param, exp) {
+		return m[action].call(this, param, exp);
 	};
 })(jQuery);
