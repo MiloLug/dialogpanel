@@ -40,7 +40,7 @@
 /*<styles for inputs text and select and uploader>*/
 .dialogPanel_custom{
   width:calc(100% - 10px);
-  color:white;
+  color: #bbb6ad;
   margin:5px;
   -webkit-appearance: none;
   -moz-appearance: none;
