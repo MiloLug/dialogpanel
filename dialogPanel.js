@@ -55,7 +55,9 @@
 			s.content.forEach(function (el, ind) {
 				switch (el.type) {
 				case "message":
-					$(bc.appendChild($('<pre class="message">' + el.text + '</pre>')[0])).attr(el.attr || {});
+					var msg=$(bc.appendChild($('<pre class="message">' + el.text + '</pre>')[0]));
+					msg.attr(el.attr || {});
+					el.init&&el.init(msg,UID);
 					break;
 				case "button":
 					var btn = dialog.querySelector(".downmenu").appendChild($(m.src.button)[0]);
@@ -66,6 +68,7 @@
 						pressed: el.btnID
 					}, fn);
 					btn.attr(el.attr || {});
+					el.init&&el.init($(btn),UID);
 					break;
 				case "textarea":
 				case "input":
@@ -75,6 +78,7 @@
 					if (inpcount < 1)
 						inpcount++,
 						inp.focus();
+					el.init&&el.init($(inp),UID);
 					break;
 				case "select":
 					var inp = $(bc.appendChild($(m.src.select)[0])),
@@ -85,6 +89,7 @@
 						tmp.value=obj.value;
 						tmp.innerHTML=obj.text;
 					});
+					el.init&&el.init(inp,UID);
 					break;
 				case "checkbox":
 					var ch = $(bc.appendChild($(m.src.checkbox)[0]));
@@ -93,19 +98,19 @@
 					.attr("cid", el.chcID)
 					.attr(el.attr || {});
 					ch.children("text").html(el.chctext);
+					el.init&&el.init(ch,UID);
 					break;
 				case "custom":
 					var cust=$(bc.appendChild($(m.src.custom)[0]));
 					cust.attr(el.attr||{});
-					el.init(cust,UID);
+					el.init&&el.init(cust,UID);
 					break;
 				case "uploader":
 					var upl = $(bc.appendChild($(m.src.upoader)[0])),
 					uplTxt = upl.children("div"),
 					uplInp = upl.children("input").attr("uid", el.uplID);
 					uplInp[el.accept ? "attr" : "removeAttr"]("accept", el.accept);
-					uplInp[el.accept ? "attr" : "removeAttr"]("multiple", el.multiple && "true").attr(el.attr || {});
-
+					uplInp[el.multiple ? "attr" : "removeAttr"]("multiple", el.multiple && "true").attr(el.attr || {});
 					uplTxt.html(el.upltext || "");
 					upl.on("change", function () {
 						var txt = "";
@@ -114,6 +119,7 @@
 						}
 						uplTxt.html(txt);
 					});
+					el.init&&el.init(upl,UID);
 					break;
 				}
 			});
