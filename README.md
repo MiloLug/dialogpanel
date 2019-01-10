@@ -36,6 +36,7 @@ connect ***dialogPanel.css*** and ***dialogPanel.js*** after jQuery connecting.
 		//some args...
 	}
 values:
+
 | type value | info | args | args values |
 |--|--|--|--|
 |           |  | attr | applies to the current component jQuery.attr (this arg there is in all components) |
