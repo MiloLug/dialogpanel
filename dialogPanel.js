@@ -20,7 +20,8 @@
 			window.focus();
 			var s = $.extend({
 					content: [],
-					dialogName:"",
+					dialogName: "",
+					init: function(){},
 					func: function () {}
 				}, param),
 			a = $(this[0] ? this[0] : $("body")[0]),
@@ -125,6 +126,7 @@
 					break;
 				}
 			});
+			s.init(dialog,UID);
 			return a;
 		},
 		close: function (uid) {
