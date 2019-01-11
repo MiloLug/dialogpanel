@@ -17,6 +17,12 @@ connect ***dialogPanel.css*** and ***dialogPanel.js*** after jQuery connecting.
 	//Type: Object
 	{
 		dialogName:custom dialog name (if needed, default: ""),
+		//Type: Object
+		attr:{},
+		//callback function, default: function(){}
+		init:function($dialog_element,dialog_uid){
+		
+		},
 		//Type: Array
 		content:[
 			component1,
@@ -29,7 +35,14 @@ connect ***dialogPanel.css*** and ***dialogPanel.js*** after jQuery connecting.
 			
 		}
 	}
-dialogName will be saved in "dialogname" attribute of modal window. In the future, this window can be found by using [CSS Attribute Selectors](https://www.w3schools.com/css/css_attribute_selectors.asp).
+***dialogName*** will be saved in "dialogname" attribute of modal window. In the future, this window can be found by using [CSS Attribute Selectors](https://www.w3schools.com/css/css_attribute_selectors.asp).
+***attr*** receives and apply attributes to dialog in the following format (in fact, this is $().attr):
+
+	{
+		attribute_name:value
+	}
+***init*** is callback function that get dialog jquery object and uid (not dialogName)
+
 #### components:
 	//Type: Object
 	{
