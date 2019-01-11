@@ -89,11 +89,11 @@ values:
 			type:"message",
 			text:"Did you enter the text?"
 		},{
-			type:"button"
+			type:"button",
 			btntext:"ok",
 			btnID:"ok"	
 		},{
-			type:"button"
+			type:"button",
 			btntext:"cancel",
 			btnID:"canc"	
 		}],
