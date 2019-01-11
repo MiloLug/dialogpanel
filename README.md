@@ -41,7 +41,7 @@ connect ***dialogPanel.css*** and ***dialogPanel.js*** after jQuery connecting.
 	{
 		attribute_name:value
 	}
-***init*** is callback function that get dialog jquery object and uid (not dialogName)
+***init*** is a callback function that receives a jquery object and UID of dialog (not dialogName — UID is stored in "uid" attribute and generated randomly)
 
 #### components:
 	//Type: Object
