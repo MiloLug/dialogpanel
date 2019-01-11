@@ -20,6 +20,7 @@
 			window.focus();
 			var s = $.extend({
 					content: [],
+					dialogName:"",
 					func: function () {}
 				}, param),
 			a = $(this[0] ? this[0] : $("body")[0]),
@@ -28,6 +29,7 @@
 			UID = m.getUID(),
 			dialog = (dialogback || (dialogback=a[0].appendChild($('<div class="dialogPanel_dialogback"></div>')[0])))
 				.appendChild($('<div class="dialogPanel_dialog" uid="' + UID + '"><div class="scrollplane"></div><div class="downmenu"></div>')[0]);
+			dialog.attr("dialogname",s.dialogName);
 			var bc = dialog.querySelector(".scrollplane"),
 			fn = function (e) {
 				var data = {
