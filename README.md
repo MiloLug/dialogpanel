@@ -75,7 +75,7 @@ values:
 
 ## Example:
 
-    $("body").dialogPanel("open",{
+    jQuery("body").dialogPanel("open",{
 		content:[{
 			type:"message",
 			text:"example message"
