@@ -16,6 +16,7 @@ connect ***dialogPanel.css*** and ***dialogPanel.js*** after jQuery connecting.
 
 	//Type: Object
 	{
+		dialogName:custom dialog name (if needed, default: ""),
 		//Type: Array
 		content:[
 			component1,
@@ -28,6 +29,7 @@ connect ***dialogPanel.css*** and ***dialogPanel.js*** after jQuery connecting.
 			
 		}
 	}
+dialogName will be saved in "dialogname" attribute of modal window. In the future, this window can be found by using (CSS Attribute Selectors)[https://www.w3schools.com/css/css_attribute_selectors.asp].
 #### components:
 	//Type: Object
 	{
