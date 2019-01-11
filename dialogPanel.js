@@ -85,7 +85,7 @@
 						tmp;
 					inp.attr("sid", el.selID).attr(el.attr || {});
 					el.options&&el.options.forEach(function(obj){
-						tmp=inp[0].appendChild($("<option></option>"));
+						tmp=inp[0].appendChild($("<option></option>")[0]);
 						tmp.value=obj.value;
 						tmp.innerHTML=obj.text;
 					});
