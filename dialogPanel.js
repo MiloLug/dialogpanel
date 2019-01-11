@@ -22,6 +22,7 @@
 					content: [],
 					dialogName: "",
 					init: function(){},
+					attr: {},
 					func: function () {}
 				}, param),
 			a = $(this[0] ? this[0] : $("body")[0]),
@@ -29,8 +30,8 @@
 			inpcount = 0,
 			UID = m.getUID(),
 			dialog = (dialogback || (dialogback=a[0].appendChild($('<div class="dialogPanel_dialogback"></div>')[0])))
-				.appendChild($('<div class="dialogPanel_dialog" uid="' + UID + '"><div class="scrollplane"></div><div class="downmenu"></div>')[0]);
-			dialog.attr("dialogname",s.dialogName);
+				.appendChild($('<div class="dialogPanel_dialog" uid="' + UID + '"><div class="scrollplane"></div><div class="downmenu"></div>')[0]),
+			jqdialog=$(dialog).attr("dialogname",s.dialogName).attr(s.attr||{});
 			var bc = dialog.querySelector(".scrollplane"),
 			fn = function (e) {
 				var data = {
@@ -60,7 +61,7 @@
 				case "message":
 					var msg=$(bc.appendChild($('<pre class="message">' + el.text + '</pre>')[0]));
 					msg.attr(el.attr || {});
-					el.init&&el.init(msg,UID);
+					el.init&&el.init(msg,UID,m);
 					break;
 				case "button":
 					var btn = dialog.querySelector(".downmenu").appendChild($(m.src.button)[0]);
@@ -71,7 +72,7 @@
 						pressed: el.btnID
 					}, fn);
 					btn.attr(el.attr || {});
-					el.init&&el.init($(btn),UID);
+					el.init&&el.init($(btn),UID,m);
 					break;
 				case "textarea":
 				case "input":
@@ -81,7 +82,7 @@
 					if (inpcount < 1)
 						inpcount++,
 						inp.focus();
-					el.init&&el.init($(inp),UID);
+					el.init&&el.init($(inp),UID,m);
 					break;
 				case "select":
 					var inp = $(bc.appendChild($(m.src.select)[0])),
@@ -92,7 +93,7 @@
 						tmp.value=obj.value;
 						tmp.innerHTML=obj.text;
 					});
-					el.init&&el.init(inp,UID);
+					el.init&&el.init(inp,UID,m);
 					break;
 				case "checkbox":
 					var ch = $(bc.appendChild($(m.src.checkbox)[0]));
@@ -101,12 +102,12 @@
 					.attr("cid", el.chcID)
 					.attr(el.attr || {});
 					ch.children("text").html(el.chctext);
-					el.init&&el.init(ch,UID);
+					el.init&&el.init(ch,UID,m);
 					break;
 				case "custom":
 					var cust=$(bc.appendChild($(m.src.custom)[0]));
 					cust.attr(el.attr||{});
-					el.init&&el.init(cust,UID);
+					el.init&&el.init(cust,UID,m);
 					break;
 				case "uploader":
 					var upl = $(bc.appendChild($(m.src.upoader)[0])),
@@ -122,11 +123,11 @@
 						}
 						uplTxt.html(txt);
 					});
-					el.init&&el.init(upl,UID);
+					el.init&&el.init(upl,UID,m);
 					break;
 				}
 			});
-			s.init(dialog,UID);
+			s.init(jqdialog,UID,m);
 			return a;
 		},
 		close: function (uid) {
