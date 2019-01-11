@@ -20,7 +20,7 @@ connect ***dialogPanel.css*** and ***dialogPanel.js*** after jQuery connecting.
 		//Type: Object
 		attr:{},
 		//callback function, default: function(){}
-		init:function($dialog_element,dialog_uid){
+		init:function($dialog_element,dialog_uid,properties_and_methods){
 		
 		},
 		//Type: Array
@@ -36,12 +36,12 @@ connect ***dialogPanel.css*** and ***dialogPanel.js*** after jQuery connecting.
 		}
 	}
 ***dialogName*** will be saved in "dialogname" attribute of modal window. In the future, this window can be found by using [CSS Attribute Selectors](https://www.w3schools.com/css/css_attribute_selectors.asp).
-***attr*** receives and apply attributes to dialog in the following format (in fact, this is $().attr):
+***attr*** receives and apply attributes to dialog in the following format (in fact, this is jQuery.attr):
 
 	{
 		attribute_name:value
 	}
-***init*** is a callback function that receives a jquery object and UID of dialog (not dialogName — UID is stored in "uid" attribute and generated randomly)
+***init*** is a callback function that receives element, UID of dialog (not dialogName — UID is stored in "uid" attribute and generated randomly) and object with all methods and properties
 
 #### components:
 	//Type: Object
@@ -55,7 +55,7 @@ values:
 | type value | info | args | args values |
 |--|--|--|--|
 |           |  | attr | applies to the current component jQuery.attr (this arg there is in all components) |
-|           |  | init | callback: `function($that_component,dialog_uid)` (this arg there is in all components) |
+|           |  | init | callback: `function($that_component,dialog_uid,properties_and_methods)` (this arg there is in all components) |
 | "message" | display some text message (special characters (for example, \\n) will be displayed normally) | text | some text |
 | "button" | add button in modal-window footer | btntext | some text |
 |           |  | btnID | text id of button |
