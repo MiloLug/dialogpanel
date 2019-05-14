@@ -69,7 +69,11 @@
 					.opt("bid", el.btnID)
 					.html(el.btntext || "")
 					.on("click", function(e){fn(e,el.btnID);});
-					btn.opt(el.attr || {});
+					btn.opt(el.attr || {})
+					.opt({
+						onEnter: el.btnID === s.onEnter ? "." : "",
+						onEsc: el.btnID === s.onEsc ? "." : ""
+					});
 					el.init && el.init(btn, UID, m);
 					break;
 				case "textarea":
@@ -161,7 +165,7 @@
 			db = a.child(".dialogPanel_dialogback",!1,!0),
 			dialog = (".dialogPanel_dialog[uid=" + uid + "]").a(),
 			t1;
-			if (!db[0] || !dialog[0])
+			if (!db || !dialog)
 				return a;
 			tl = db.child("[toplayer]",!1,!0);
 			tl && tl
@@ -172,6 +176,25 @@
 			return a;
 		}
 	};
+	window.A.on("combination", "enter", function (e) {
+		var onEnter = ".dialogPanel_dialog[toplayer] [onEnter]".a();
+		if (onEnter)
+			e.stopEvent(),
+			onEnter.emitEvent("click");
+	});
+
+	window.A.on("combination", "esc", function (e) {
+		var dg = ".dialogPanel_dialog[toplayer]".a(),
+		onEsc = ".dialogPanel_dialog[toplayer] [onEsc]".a();
+		if (dg)
+			e.stopEvent();
+		else
+			return;
+		if (onEsc)
+			onEsc.emitEvent("click");
+		else
+			A.dialogPanel("close",dg.opt("uid"));
+	});
 	A({
 		dialogPanel : function (action, param, exp) {
 			return m[action].call(this.a(), param, exp);
