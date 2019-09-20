@@ -97,7 +97,7 @@
 					break;
 				case "checkbox":
 					var ch = $(bc.appendChild($(m.src.checkbox)[0]));
-					bc.appendChild($("<br>"));
+					bc.appendChild($("<br>")[0]);
 					ch.children("input")
 					.attr("cid", el.chcID)
 					.attr(el.attr || {});
